@@ -12,12 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Midterm_Arina_Mirzakhani">
 
-
-        <activity
-            android:name=".HistoryActivity"
-            android:exported="false" />
-
-
+        <!-- Single-activity app that hosts TableFragment & HistoryFragment -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -26,6 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Removed HistoryActivity since navigation is via BottomNavigationView + fragments -->
 
     </application>
 </manifest>

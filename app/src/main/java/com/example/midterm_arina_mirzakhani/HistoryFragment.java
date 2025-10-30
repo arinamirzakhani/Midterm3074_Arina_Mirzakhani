@@ -42,7 +42,7 @@ public class HistoryFragment extends Fragment implements MenuProvider {
                 Toast.makeText(requireContext(), "Table generated for " + numbers.get(pos), Toast.LENGTH_SHORT).show()
         );
 
-        // Attach menu for this tab
+
         requireActivity().addMenuProvider(this, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
 
         return v;

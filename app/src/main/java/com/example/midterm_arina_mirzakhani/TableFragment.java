@@ -85,7 +85,7 @@ public class TableFragment extends Fragment implements MenuProvider {
                     .show();
         });
 
-        // Attach this fragment as a MenuProvider to the Activity toolbar
+
         requireActivity().addMenuProvider(this, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
 
         return v;
@@ -106,7 +106,7 @@ public class TableFragment extends Fragment implements MenuProvider {
         out.putString(KEY_NUM, etNumber.getText().toString());
     }
 
-    // ---- MenuProvider for toolbar actions on this tab ----
+
     @Override
     public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
         menu.clear();

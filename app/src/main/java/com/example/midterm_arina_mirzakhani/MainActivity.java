@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
-        // default tab
+
         if (savedInstanceState == null) {
             bottomNav.setSelectedItemId(R.id.nav_table);
         }

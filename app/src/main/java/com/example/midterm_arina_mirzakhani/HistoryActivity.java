@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
@@ -22,6 +25,11 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
         setTitle("History");
 
+        // Optional: show Up arrow as well
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         ListView lv = findViewById(R.id.lvHistory);
         numbers = DataStore.getHistory();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, numbers);
@@ -30,6 +38,10 @@ public class HistoryActivity extends AppCompatActivity {
         lv.setOnItemClickListener((p, v, pos, id) ->
                 Toast.makeText(this, "Table generated for " + numbers.get(pos), Toast.LENGTH_SHORT).show()
         );
+
+        // NEW: Back button -> return to Main screen
+        Button btnBack = findViewById(R.id.btnBackToMain);
+        btnBack.setOnClickListener(v -> finish()); // simply close this activity
     }
 
     @Override
@@ -40,8 +52,19 @@ public class HistoryActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_clear_history) {
-            if (numbers.isEmpty()) return true;
+        int id = item.getItemId();
+
+        // Handle ActionBar Up arrow as back
+        if (id == android.R.id.home) {
+            getOnBackPressedDispatcher().onBackPressed();
+            return true;
+        }
+
+        if (id == R.id.action_clear_history) {
+            if (numbers.isEmpty()) {
+                Toast.makeText(this, "History is already empty", Toast.LENGTH_SHORT).show();
+                return true;
+            }
             new AlertDialog.Builder(this)
                     .setTitle("Clear history?")
                     .setMessage("Remove all saved numbers from history?")

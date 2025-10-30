@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        DataStore.init(getApplicationContext());
+
         setContentView(R.layout.activity_main);
         setTitle("timesTable");
 
@@ -63,16 +66,17 @@ public class MainActivity extends AppCompatActivity {
             try {
                 int n = Integer.parseInt(txt);
                 generateTable(n);
-                DataStore.addToHistory(n);
+                DataStore.addToHistory(n); // persisted by DataStore
             } catch (NumberFormatException e) {
                 Toast.makeText(this, "Invalid number", Toast.LENGTH_SHORT).show();
             }
         });
 
-        // NEW: History button navigates to HistoryActivity
+
         btnHistory.setOnClickListener(v ->
                 startActivity(new Intent(MainActivity.this, HistoryActivity.class))
         );
+
 
         lvResults.setOnItemClickListener((parent, view, position, id) -> {
             String item = rows.get(position);

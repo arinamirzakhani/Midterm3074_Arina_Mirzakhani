@@ -12,12 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Midterm_Arina_Mirzakhani">
 
-        <!-- History screen (no launcher, no intent-filters) -->
+
         <activity
             android:name=".HistoryActivity"
             android:exported="false" />
 
-        <!-- Main/launcher screen -->
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

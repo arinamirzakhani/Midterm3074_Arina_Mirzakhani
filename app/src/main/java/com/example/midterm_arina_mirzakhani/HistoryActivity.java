@@ -1,5 +1,4 @@
 package com.example.midterm_arina_mirzakhani;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,7 +24,7 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
         setTitle("History");
 
-        // Optional: show Up arrow as well
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
@@ -39,7 +38,7 @@ public class HistoryActivity extends AppCompatActivity {
                 Toast.makeText(this, "Table generated for " + numbers.get(pos), Toast.LENGTH_SHORT).show()
         );
 
-        // NEW: Back button -> return to Main screen
+
         Button btnBack = findViewById(R.id.btnBackToMain);
         btnBack.setOnClickListener(v -> finish()); // simply close this activity
     }

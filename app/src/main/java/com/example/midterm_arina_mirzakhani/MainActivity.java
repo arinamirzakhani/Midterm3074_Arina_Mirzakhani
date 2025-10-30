@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText etNumber;
     private Button btnInsert;
-    private Button btnHistory; // NEW
+    private Button btnHistory;
     private ListView lvResults;
     private ArrayAdapter<String> adapter;
     private final ArrayList<String> rows = new ArrayList<>();
@@ -37,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
         etNumber = findViewById(R.id.etNumber);
         btnInsert = findViewById(R.id.btnInsert);
-        btnHistory = findViewById(R.id.btnHistory); // NEW
+        btnHistory = findViewById(R.id.btnHistory);
         lvResults = findViewById(R.id.lvResults);
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, rows);
         lvResults.setAdapter(adapter);
 
-        // Restore on rotation
+
         if (savedInstanceState != null) {
             ArrayList<String> saved = savedInstanceState.getStringArrayList(KEY_ROWS);
             if (saved != null) {
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    // Options menu (History + Clear All)
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
